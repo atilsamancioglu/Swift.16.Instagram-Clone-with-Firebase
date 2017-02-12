@@ -1,6 +1,5 @@
-<<<<<<< HEAD
-# Swift.16.Instagram-Clone-with-Firebase
-=======
-# Swift.16.Firebase-Instagram-Clone
->>>>>>> 3213abd12b75dfae79a7a5ea5d2110fd306e5b8d
-# Swift.16.Instagram-Clone-with-Firebase
+Clone the file</br>
+run pod install</br>
+Open a Firebase Account and configure your setup</br>
+Download your google .plist file and change it with the existing one</br>
+You are ready to go!
