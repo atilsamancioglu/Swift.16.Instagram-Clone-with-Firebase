@@ -35,7 +35,7 @@ class feedVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func getDataFromServer() {
         
-        FIRDatabase.database().reference().child("users").observe(FIRDataEventType.childAdded, with: { (snapshot) in
+        Database.database().reference().child("users").observe(DataEventType.childAdded, with: { (snapshot) in
             
             
             let values = snapshot.value! as! NSDictionary

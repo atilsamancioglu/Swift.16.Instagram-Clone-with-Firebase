@@ -31,7 +31,7 @@ class uploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
     }
 
-    func selectImage() {
+    @objc func selectImage() {
         
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -54,11 +54,11 @@ class uploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
         
         self.uploadButton.isEnabled = false
         
-        let mediaFolder = FIRStorage.storage().reference().child("media")
+        let mediaFolder = Storage.storage().reference().child("media")
         
         if let data = UIImageJPEGRepresentation(postImage.image!, 0.5) {
             
-            mediaFolder.child("\(uuid).jpg").put(data, metadata: nil, completion: { (metadata, error) in
+            mediaFolder.child("\(uuid).jpg").putData(data, metadata: nil, completion: { (metadata, error) in
                 
                 if error != nil {
                     let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
@@ -71,9 +71,9 @@ class uploadVC: UIViewController, UIImagePickerControllerDelegate, UINavigationC
                     
                    let imageURL = metadata?.downloadURL()?.absoluteString
                     
-                    let post = ["image" : imageURL!, "postedby" : FIRAuth.auth()!.currentUser!.email!, "uuid" : self.uuid, "posttext" : self.postText.text] as [String : Any]
+                    let post = ["image" : imageURL!, "postedby" : Auth.auth().currentUser!.email!, "uuid" : self.uuid, "posttext" : self.postText.text] as [String : Any]
                     
-                    FIRDatabase.database().reference().child("users").child((FIRAuth.auth()?.currentUser?.uid)!).child("posts").childByAutoId().setValue(post)
+                    Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!).child("posts").childByAutoId().setValue(post)
                     
                     self.postImage.image = UIImage(named: "tapme.png")
                     self.postText.text = ""

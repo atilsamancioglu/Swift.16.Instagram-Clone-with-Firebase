@@ -28,7 +28,7 @@ class signUpVC: UIViewController {
         
         if usernameText.text != "" && passwordText.text != "" {
             
-            FIRAuth.auth()?.signIn(withEmail: usernameText.text!, password: passwordText.text!, completion: { (user, error) in
+            Auth.auth().signIn(withEmail: usernameText.text!, password: passwordText.text!, completion: { (user, error) in
                 
                 if error != nil {
                     let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertControllerStyle.alert)
@@ -60,7 +60,7 @@ class signUpVC: UIViewController {
         
         if usernameText.text != "" && passwordText.text != "" {
             
-            FIRAuth.auth()?.createUser(withEmail: usernameText.text!, password: passwordText.text!, completion: { (user, error) in
+            Auth.auth().createUser(withEmail: usernameText.text!, password: passwordText.text!, completion: { (user, error) in
                 
                 if error != nil {
                     

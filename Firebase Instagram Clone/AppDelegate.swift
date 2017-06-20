@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         rememberLogin()
         
-        FIRApp.configure()
+        FirebaseApp.configure()
         return true
     }
 
